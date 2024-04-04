@@ -2,9 +2,9 @@
 
 All required libraries can found in `requirements.txt` and can be installed with `pip install -r requirements.txt`.
 
-* `clean_data.py` extracts the relevant information from the raw LOD dataset
-* `synonym_dataset.py` uses the cleaned LOD dataset and creates an NLI-like dataset with synoynms as "entailment" labels and randomly chosen words (based on a Levenstein-distance-based condition) as "contradiction" labels
-* `translate_datasets.py` reformats and translates (German) datasets that we use for evaluation
+* `src/clean_data.py` extracts the relevant information from the raw LOD dataset
+* `src/synonym_dataset.py` uses the processed LOD data to create the ```LETZ-SYN``` dataset
+* `src/translation_dataset.py` uses the processed LOD data to create the ```LETZ-WoT``` dataset
 
 
 To train models, use
@@ -18,8 +18,8 @@ python src/run_training.py \
 To evaluate the trained models, use
 ```shell
 python src/run_evaluation.py \
-  --model_type mbert \
-  --training_data xnli_de_full \
-  --evaluation_data gnad10_test_lb mlsum_test_lb agnews_test_lb yahoo_test_lb gnad10_test_de mlsum_test_de \
+  --model_type mbert luxembert \
+  --training_data ours_hr ours_lr wnli xnli_hr_de xnli_lr_de \
+  --evaluation_data lux_news_rtl sib-200 \
   --seed 0 1 2 3
 ```

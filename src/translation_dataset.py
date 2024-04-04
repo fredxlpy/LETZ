@@ -63,6 +63,6 @@ for i, row in tqdm(new_data.iterrows()):
 train_set, val_set = train_test_split(nli_dataset, train_size=0.8, shuffle=True, stratify=nli_dataset['class'])
 val_set, test_set = train_test_split(val_set, train_size=0.5, shuffle=True, stratify=val_set['class'])
 
-train_set.to_excel('eval_datasets/Ours/translation_dataset/train.xlsx', index=False)
-val_set.to_excel('eval_datasets/Ours/translation_dataset/val.xlsx', index=False)
-test_set.to_excel('eval_datasets/Ours/translation_dataset/test.xlsx', index=False)
+train_set.to_excel('eval_datasets/LETZ-WoT/train.xlsx', index=False)
+val_set.to_excel('eval_datasets/LETZ-WoT/val.xlsx', index=False)
+test_set.to_excel('eval_datasets/LETZ-WoT/test.xlsx', index=False)
