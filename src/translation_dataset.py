@@ -36,7 +36,7 @@ for lang in ['fr', 'de', 'en', 'pt']:
 
                 row_counter +=1
 
-# Remove samples where the word itself is too similar to its synonym
+# Remove samples where the word itself is too similar to its synonym (based on Levenshtein distance)
 new_data = new_data[new_data['lvd']>=3]
 
 # Choose contradictory words

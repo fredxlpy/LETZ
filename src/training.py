@@ -16,7 +16,7 @@ torch.cuda.empty_cache()
 # Setting the device to GPU if available, otherwise CPU
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-"""
+""" EXAMPLE
 model_type = 'luxembert'
 training_data = 'ours_lr'
 seed = 1

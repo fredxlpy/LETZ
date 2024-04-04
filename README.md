@@ -3,7 +3,7 @@
 ## Code
 All required libraries can found in `requirements.txt` and can be installed with `pip install -r requirements.txt`.
 
-* `src/clean_data.py` extracts the relevant information from the raw LOD dataset
+* `src/process_LOD.py` extracts the relevant information from the raw LOD dataset
 * `src/synonym_dataset.py` uses the processed LOD data to create the ```LETZ-SYN``` dataset
 * `src/translation_dataset.py` uses the processed LOD data to create the ```LETZ-WoT``` dataset
 

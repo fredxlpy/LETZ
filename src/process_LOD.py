@@ -36,9 +36,9 @@ for i, row in tqdm(data.iterrows()):
                 except:
                     pass
 
-            # ================= #
-            # Retrieve examples #
-            # ================= #
+            # ========================== #
+            # Retrieve example sentences #
+            # ========================== #
             try:
                 examples = []
                 for example in meaning['examples']:

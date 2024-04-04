@@ -17,7 +17,7 @@ f1 = evaluate.load('f1')
 precision = evaluate.load('precision')
 recall = evaluate.load('recall')
 
-"""
+""" EXAMPLE
 model_type = 'luxembert'
 training_data = 'ours_hr'
 seed = 0

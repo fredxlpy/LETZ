@@ -16,7 +16,7 @@ parser.add_argument("--seed", type=int, default=[0], nargs='+')
 # Parse the arguments and store them in a variable
 args = parser.parse_args()
 
-"""
+""" EXAMPLE
 MODEL_TYPE = 'luxembert'
 TRAINING_DATA = 'ours_lr'
 SEED = 0
