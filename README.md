@@ -1,5 +1,6 @@
 # Code and Data for *Forget NLI, Use a Dictionary: Zero-Shot Topic Classification for Low-Resource Languages with Application to Luxembourgish*
 
+## Code
 All required libraries can found in `requirements.txt` and can be installed with `pip install -r requirements.txt`.
 
 * `src/clean_data.py` extracts the relevant information from the raw LOD dataset
@@ -23,3 +24,6 @@ python src/run_evaluation.py \
   --evaluation_data lux_news_rtl sib-200 \
   --seed 0 1 2 3
 ```
+
+## Data
+The original [Luxembourg Online Dictionary](https://lod.lu) (LOD) data can be downloaded from the [Luxembourgish Open Data Platform](https://data.public.lu/fr/datasets/letzebuerger-online-dictionnaire-lod-linguistesch-daten/) or can be accessed via their [API](https://data.public.lu/fr/datasets/letzebuerger-online-dictionnaire-lod-public-api/). All of their data is available under a [Creative Commons Zero (CC0)](https://creativecommons.org/publicdomain/zero/1.0/) license.
