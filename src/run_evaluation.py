@@ -1,5 +1,4 @@
 import argparse
-
 import pandas as pd
 
 try:
@@ -20,7 +19,7 @@ args = parser.parse_args()
 """
 MODEL_TYPE = 'luxembert'
 TRAINING_DATA = 'ours_hr'
-EVALUATION_DATA = 'gnad_10_test_lb'
+EVALUATION_DATA = 'lux_news_rtl'
 SEED = 0
 """
 
@@ -55,4 +54,4 @@ for MODEL_TYPE in args.model_type:
 
                 pd.DataFrame(
                     results, columns=['model', 'train_set', 'eval_set', 'accuracy', 'f1_score', 'precision', 'recall', 'seed']
-                ).to_excel(f'Output/results_{SEED}_{MODEL_TYPE}_v3.xlsx', index=False)
+                ).to_excel(f'Output/results_{SEED}_{MODEL_TYPE}.xlsx', index=False)

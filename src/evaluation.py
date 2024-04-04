@@ -1,10 +1,9 @@
 import numpy as np
 import pandas as pd
 import torch
-from transformers import AutoTokenizer, Trainer, TrainingArguments, AutoModelForSequenceClassification
+from transformers import AutoTokenizer, Trainer, TrainingArguments
 from datasets import Dataset
 import evaluate
-from tqdm import tqdm
 
 # Clearing the GPU memory cache
 torch.cuda.empty_cache()
@@ -48,8 +47,6 @@ def evaluate(model_type, training_data, seed, evaluation_data):
         model_name = "bert-base-multilingual-cased"
     elif model_type == "luxembert":
         model_name = "lothritz/LuxemBERT"
-    elif model_type == 'glot500':
-        model_name = 'cis-lmu/glot500-base'
     else:
         raise ValueError("Model does not exist...")
 
@@ -69,7 +66,7 @@ def evaluate(model_type, training_data, seed, evaluation_data):
     inputs = tokenizer(np.repeat(samples, len(topics_dict)).tolist(),
                        [f"An dësem Beispill geet et em {label}." for label in topics_dict.keys()] * len(samples),
                        return_tensors="pt", padding="max_length", truncation='only_first',
-                       max_length=512 if evaluation_data in ['gnad10_test_lb', 'lux_news_rtl'] else 128)
+                       max_length=512 if evaluation_data in ['lux_news_rtl'] else 128)
 
     # Convert the inputs to a Dataset object
     data_set = Dataset.from_dict(inputs.data)
@@ -122,11 +119,3 @@ def evaluate(model_type, training_data, seed, evaluation_data):
     full_recall_score = {topic: score for topic, score in zip(list(topics_dict.keys()), full_recall_score)}
 
     return accuracy, f1_score, precision_score, recall_score
-
-
-#from sklearn.metrics import f1_score, precision_score, recall_score, top_k_accuracy_score
-#f1_score(data['label'].tolist(), predictions.numpy().tolist(), average=None)
-#precision_score(data['label'].tolist(), predictions.numpy().tolist(), average=None)
-#recall_score(data['label'].tolist(), predictions.numpy().tolist(), average=None)
-#top_k_accuracy_score(data['label'].tolist(), entailment_scores, k=3)
-

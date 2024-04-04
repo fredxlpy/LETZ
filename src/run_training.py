@@ -17,7 +17,7 @@ parser.add_argument("--seed", type=int, default=[0], nargs='+')
 args = parser.parse_args()
 
 """
-MODEL_TYPE = 'glot500'
+MODEL_TYPE = 'luxembert'
 TRAINING_DATA = 'ours_lr'
 SEED = 0
 """
@@ -39,4 +39,3 @@ for MODEL_TYPE in args.model_type:
                 seed=SEED)
 
             torch.save(model, f'./Models/{MODEL_TYPE}_{TRAINING_DATA}_{SEED}')
-            #model.save_pretrained(f'./Models/{MODEL_TYPE}_{TRAINING_DATA}_{SEED}')

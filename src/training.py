@@ -1,17 +1,14 @@
-from transformers import BertConfig, AutoTokenizer, Trainer, AutoModelForSequenceClassification, TrainingArguments
+from transformers import AutoTokenizer, Trainer, AutoModelForSequenceClassification, TrainingArguments
 from datasets import load_dataset
 import pandas as pd
 import torch
 import shutil
-import torch.nn as nn
 
 # Importing custom functions for data preprocessing and metrics computation
 try:
     from src.utils import compute_metrics, preprocess_ours, preprocess_wnli, preprocess_xnli
-    from src.model_init import BertForSequenceClassification
 except ImportError:
     from utils import compute_metrics, preprocess_ours, preprocess_wnli, preprocess_xnli
-    from model_init import BertForSequenceClassification
 
 # Clearing the GPU memory cache
 torch.cuda.empty_cache()
@@ -47,8 +44,6 @@ def train(model_type, training_data, seed):
         model_name = "bert-base-multilingual-cased"
     elif model_type == "luxembert":
         model_name = "lothritz/LuxemBERT"
-    elif model_type == 'glot500':
-        model_name = 'cis-lmu/glot500-base'
     else:
         raise ValueError('Model does not exist...')
 
@@ -58,13 +53,8 @@ def train(model_type, training_data, seed):
     def model_init():
 
         # Load base model
-        #model = BertForSequenceClassification.from_pretrained(
-        #    model_name, num_labels=2)
         model = AutoModelForSequenceClassification.from_pretrained(
             model_name, num_labels=2)
-
-        #for params in list(model.bert.parameters()):
-        #    params.requires_grad = False
 
         # Move the model to the device (GPU or CPU)
         model.to(device)
@@ -75,9 +65,6 @@ def train(model_type, training_data, seed):
     if 'wnli' in training_data or 'lr' in training_data:
         n_train = 568
         n_val = 63
-    #elif 'ours_trans' in training_data:
-    #    n_train = 39132
-    #    n_val = 4892
     else:
         n_train = 11822
         n_val = 1478
@@ -124,7 +111,7 @@ def train(model_type, training_data, seed):
     # Define hyper-parameters
     training_args = TrainingArguments(output_dir=output_dir,
                                       max_steps=-1,
-                                      num_train_epochs=5,  # 10 if ('lr' in training_data) or (training_data == 'wnli') else 5,
+                                      num_train_epochs=5,
 
                                       evaluation_strategy="epoch",
 
