@@ -28,6 +28,7 @@ python src/run_evaluation.py \
 ## Data
 The original [Luxembourg Online Dictionary](https://lod.lu) (LOD) data can be downloaded from the [Luxembourgish Open Data Platform](https://data.public.lu/fr/datasets/letzebuerger-online-dictionnaire-lod-linguistesch-daten/) or can be accessed via their [API](https://data.public.lu/fr/datasets/letzebuerger-online-dictionnaire-lod-public-api/). All of their data is available under a [Creative Commons Zero (CC0)](https://creativecommons.org/publicdomain/zero/1.0/) license.
 
+Our datasets are also available accessible via [HuggingFace](https://huggingface.co/datasets/fredxlpy/LETZ).
 
 ## License
 
